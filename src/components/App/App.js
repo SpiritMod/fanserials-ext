@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import Header from '../Header/Header';
 import NewSeries from '../NewSeries/NewSeries';
+import loadData from  '../../utils/loadData';
 
 //api
 const linkApi = 'api/v1/episodes?key=test_key&limit=20';
@@ -20,49 +21,24 @@ class App extends Component {
 
   setStateAsync(state) {
     return new Promise((resolve) => {
-      this.setState(state, resolve)
+      this.setState(state, resolve);
     });
   }
 
   async componentDidMount() {
 
-    const host = await fetch(activeHost)
-      .then(function (res) {
-        if (res.status !== 200) {
-          return Promise.reject(new Error(res.statusText))
-        }
-        return Promise.resolve(res)
-      })
-      .then(function (res) {
-        return res.json()
-      })
-      .then(function (data) {
-        return data.sites[0].redirectTo
-      })
-      .catch(function (error) {
-        console.log('error', error)
-      });
+    const hostData = await loadData(activeHost);
 
-    const response = await fetch(host + linkApi)
-      .then(function (response) {
-        if (response.status !== 200) {
-          return Promise.reject(new Error(response.statusText))
-        }
-        return Promise.resolve(response)
-      })
-      .then(function (response) {
-        return response.json()
-      })
-      .then(function (data) {
-        return data
-      })
-      .catch(function (error) {
-        console.log('error', error)
-      });
+    const host = await hostData.sites[0].redirectTo;
+
+    const response = await loadData(host + linkApi);
 
     const json = await response.data;
 
-    await this.setStateAsync({ data: json });
+    await this.setStateAsync({
+      data: json,
+      loading: false
+    });
 
     this.storageData();
   }
@@ -75,7 +51,7 @@ class App extends Component {
   };
 
   render() {
-    const itemSerial = [...this.state.data];
+    const { data } = this.state;
     const fanserialsLink = this.state.redirectHost;
 
     return (
@@ -88,7 +64,7 @@ class App extends Component {
             <a target="_blank" href={fanserialsLink+'profile/'} className="btn"><div className="help">Личный кабинет</div></a>
           </div>
         </div>
-        <NewSeries data={itemSerial} />
+        <NewSeries data={data} />
       </div>
     );
   }
