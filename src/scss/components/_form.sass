@@ -1,0 +1,319 @@
+form, .form
+  label, .label
+    color: #716d6d
+    font-size: 18px
+    font-weight: 400
+    line-height: 1
+    margin-bottom: 10px
+    display: inline-block
+    cursor: pointer
+    text-align: left
+    text-transform: none
+    @media #{$small-only}
+      font-size: 16px
+    &.small
+      font-size: 14px
+    a
+      color: $orange
+      text-decoration: underline
+      &:hover
+        text-decoration: none
+    sup
+      color: #ff0000
+  input[type="text"],
+  input[type="tel"],
+  input[type="email"],
+  input[type="password"],
+  input[type="search"],
+  input[type="url"],
+  textarea
+    background: transparent
+    color: rgba(#5c5e75, 1)
+    font-size: 18px
+    line-height: 1
+    text-align: left
+    width: 100%
+    transition: all .1s linear 0s
+    border-radius: 0
+    border: 1px solid rgba(#5c5e75,1)
+    box-sizing: border-box
+    -webkit-appearance: none
+    outline: none
+    @media #{$small-only}
+      font-size: 16px
+    &::-webkit-input-placeholder
+      color: rgba(#5c5e75,1)
+    &::-moz-placeholder
+      color: rgba(#5c5e75,1)
+    &:-ms-input-placeholder
+      color: rgba(#5c5e75,1)
+    &:-moz-placeholder
+      color: rgba(#5c5e75,1)
+    &:focus
+      border-color: $orange
+      &::-webkit-input-placeholder
+        color: transparent
+      &::-moz-placeholder
+        color: transparent
+      &:-ms-input-placeholder
+        color: transparent
+      &:-moz-placeholder
+        color: transparent
+    &.error
+      border-color: #9d0406
+  input[type="text"],
+  input[type="tel"],
+  input[type="email"],
+  input[type="search"],
+  input[type="url"],
+  input[type="password"]
+    height: 56px
+    padding: 0 12px 0
+    @media #{$small-only}
+      padding: 0 12px 0
+      height: 46px
+  .field-password
+    input
+      text-transform: none!important
+      &::-webkit-input-placeholder
+        text-transform: uppercase
+      &::-moz-placeholder
+        text-transform: uppercase
+      &:-ms-input-placeholder
+        text-transform: uppercase
+      &:-moz-placeholder
+        text-transform: uppercase
+  input[type="search"]
+    -webkit-appearance: none
+  textarea
+    resize: none
+    padding: 10px 0
+    height: 160px
+    @media #{$small-only}
+      height: 160px
+      padding: 10px 0
+  .error
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"],
+    input[type="password"],
+    input[type="search"],
+    input[type="url"],
+    textarea
+      //color: #a10830
+      //border-color: #a10830
+      //box-shadow: 0 0 0 1px #a10830
+      @media #{$medium-mobile}
+        box-shadow: none
+      &::-webkit-input-placeholder
+        color: rgba(#a10830,1)
+      &::-moz-placeholder
+        color: rgba(#a10830,1)
+      &:-ms-input-placeholder
+        color: rgba(#a10830,1)
+      &:-moz-placeholder
+        color: rgba(#a10830,1)
+    .error-message
+
+  .form-group
+    margin-bottom: 0
+    .form-field
+      position: relative
+      margin-bottom: 22px
+      @media only screen and (min-width: 1025px) and (max-height: 840px)
+        margin-bottom: 15px
+      @media #{$small-only}
+        margin-bottom: 15px
+      &:last-child
+        margin-bottom: 0
+      &.required
+        position: relative
+        &:before
+          content: "*"
+          font-size: 20px
+          line-height: 1
+          color: #2a2793
+          display: block
+          position: absolute
+          left: 0
+          top: 7px
+      &.field-password1
+        position: relative
+        input[type="password"]
+          padding-right: 55px
+        .btn-show-pass
+          display: block
+          position: absolute
+          width: 45px
+          height: 45px
+          right: -1px
+          top: -1px
+          font-size: 0
+          text-decoration: none
+          color: #999
+          transition: color 0.2s ease 0s
+          @include vertical()
+          &:hover
+            color: $orange
+          span
+            display: inline-block
+            vertical-align: middle
+            font-size: 22px
+            color: inherit
+            margin-top: 6px
+          &.active
+            span
+              margin-top: 0
+              &:before
+                content: $icon-eye-open
+    &.form-footer
+      margin: 0
+      padding-top: 22px
+      text-align: center
+      .btn
+        margin: 0
+  .group-email-phone
+    position: relative
+    padding: 0 70px 0 0
+    @media #{$small-only}
+      padding: 0 55px 0 0
+    .form-field
+      width: 100%
+    .field-change
+      display: block
+      position: absolute
+      right: 0
+      bottom: 0
+  .error
+    .error-message
+      opacity: 1
+      visibility: visible
+      //display: block
+  .error-message
+    //display: none
+    width: 100%
+    background-color: #a10830
+    //box-shadow: 0 0 0 1px #a10830
+    color: #fff
+    font-size: 12px
+    font-weight: 400
+    line-height: 1.2
+    text-transform: uppercase
+    padding: 10px 10px
+    margin-top: 12px
+    text-align: left
+    transition: all 0.2s ease 0s
+    opacity: 0
+    visibility: hidden
+
+
+.field-checkbox
+  position: relative
+  font-size: 0
+  padding: 0 0 0 0
+  margin-bottom: 10px
+  input[type="checkbox"]
+    display: none
+    &:checked
+      + label
+        &:before
+          color: $orange
+    + label
+      display: inline-block
+      vertical-align: top
+      margin: 0 0
+      padding: 1px 0 0 34px
+      cursor: pointer
+      line-height: 1.2
+      font-size: 18px
+      font-weight: 400!important
+      color: #716d6d
+      @media #{$small-only}
+        font-size: 16px
+        padding-top: 2px
+      strong
+        font-weight: 700
+      &:hover
+        //&:before
+        //  color: #50942b
+        //  border-color: #50942b
+      &:before
+        content: $icon-check-1
+        @extend .icomoon
+        display: block
+        width: 22px
+        height: 22px
+        border: 1px solid #716d6d
+        border-radius: 0
+        color: transparent
+        line-height: 20px
+        text-align: center
+        position: absolute
+        top: 0
+        left: 0
+        z-index: 10
+        text-indent: 0
+        font-size: 12px
+        opacity: 1
+        background: transparent
+        transition: all 0.1s ease 0s
+        @media #{$small-only}
+          top: 0
+  &.text-upper
+    input[type="checkbox"]
+      + label
+        text-transform: uppercase
+        span
+          text-transform: none
+.field-radio
+  margin-bottom: 5px
+  input[type="radio"]
+    display: none
+    &:checked
+      + label
+        color: $orange
+        &:before
+          background-color: $orange
+    + label
+      display: inline-block
+      position: relative
+      margin: 0 0
+      cursor: pointer
+      color: #d9d9d9
+      font-family: $primary-font
+      font-size: 16px
+      font-weight: 300!important
+      line-height: 1.2
+      padding: 0 0 0 40px
+      transition: all 0.1s ease 0s
+      @media #{$small-only}
+        font-size: 14px
+        padding: 2px 0 2px 30px
+      &:before
+        content: ""
+        display: block
+        position: absolute
+        left: 0
+        top: 0
+        width: 20px
+        height: 20px
+        opacity: 1
+        z-index: 2
+        border: 4px solid #5c5e75
+        background-color: #5c5e75
+        border-radius: 50%
+        transition: all 0.1s ease 0s
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,111 @@
+@import "../../scss/partials/helpers";
+
+.search {
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 40px;
+  transition: width 0.15s linear 0s;
+  &.is-opened {
+    width: 100%;
+    .btn-show {
+      background: transparent;
+      border-color: transparent;
+      &:hover {
+        border-color: transparent;
+        .icon-search {
+          color: #ff8b01;
+        }
+      }
+      .icon-search {
+        color: rgba(#fff,0.3);
+        font-size: 14px;
+        &:before {
+          content: "\e92c";
+        }
+      }
+    }
+    form {
+      visibility: visible;
+      opacity: 1;
+      input {
+        padding: 0 40px;
+      }
+      .btn-submit {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+  }
+  .btn-show {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 10;
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(#ff8b01,0.5);
+    @include vertical;
+    transition: all 0.1s ease 0s;
+    background: #000;
+    &:hover {
+      border-color: #ff8b01;
+    }
+    .icon-search {
+      display: inline-block;
+      vertical-align: middle;
+      font-size: 20px;
+      color: #ff8b01;
+    }
+  }
+  form {
+    visibility: hidden;
+    opacity: 0;
+    input {
+      background: #000;
+      width: 100%;
+      border: 1px solid rgba(#fff,0.3);
+      padding: 0 0 0 40px;
+      height: 40px;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1;
+      box-shadow: none;
+      outline: none;
+      &:focus {
+        //border-color: #ff8b01;
+      }
+    }
+    .btn-submit {
+      background: transparent;
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 10;
+      width: 40px;
+      height: 40px;
+      margin: 0;
+      padding: 0;
+      outline: none;
+      transition: all 0.1s ease 0s;
+      @include vertical;
+      color: rgba(#fff,0.3);
+
+      visibility: hidden;
+      opacity: 0;
+      &:hover {
+        color: #ff8b01;
+      }
+      .icon-search {
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 20px;
+        color: inherit;
+      }
+    }
+  }
+}
