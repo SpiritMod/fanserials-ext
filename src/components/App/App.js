@@ -65,6 +65,9 @@ class App extends Component {
           </div>
         </div>
         <NewSeries data={data} />
+        <div className="field-all-new">
+          <a href={`${fanserialsLink}new/`} target="_blank"><span className="help">Показать все<span className="icon-arrow-right"></span></span></a>
+        </div>
       </div>
     );
   }
