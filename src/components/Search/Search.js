@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import './Search.scss';
-import utf8_decode from '../windows-1251';
-
-
+//import utf8_decode from '../windows-1251';
 
 class Search extends Component {
   constructor(props) {
@@ -35,7 +33,7 @@ class Search extends Component {
   handleSubmit = (event) => {
     const link = this.props.data;
     let searchText = this.state.value;
-    let url = link+"search/?query=" + utf8_decode(searchText);
+    let url = link+"search/?query=" + searchText;
     window.open(url, "_blank");
     event.preventDefault();
   };
